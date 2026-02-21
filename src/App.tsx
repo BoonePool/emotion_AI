@@ -15,6 +15,7 @@ export default function App() {
     flagBlurbs: {},
     fullSummary: null,
     sessionMetrics: null,
+    videoUrl: null,
   });
 
   const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +40,7 @@ export default function App() {
       <div className="flex items-center justify-center h-screen bg-zinc-50">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-rose-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-zinc-600 font-medium">Loading Emotion AI...</p>
+          <p className="text-zinc-600 font-medium">Loading MoodMetrics...</p>
         </div>
       </div>
     );
@@ -47,7 +48,7 @@ export default function App() {
 
   return (
     <Router>
-      <Layout session={session} setSession={setSession}>
+      <Layout>
         <Routes>
           <Route path="/" element={<Home session={session} setSession={setSession} />} />
           <Route path="/report" element={<Report session={session} />} />

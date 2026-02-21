@@ -19,7 +19,6 @@ interface HomeProps {
 
 export default function Home({ session, setSession }: HomeProps) {
   const [isRecording, setIsRecording] = useState(false);
-  const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const [selectedFlag, setSelectedFlag] = useState<Flag | null>(session.flags[0] || null);
   const [isGeneratingBlurb, setIsGeneratingBlurb] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -41,7 +40,7 @@ export default function Home({ session, setSession }: HomeProps) {
       video.removeEventListener('timeupdate', handleTimeUpdate);
       video.removeEventListener('durationchange', handleDurationChange);
     };
-  }, [videoUrl, isRecording]);
+  }, [session.videoUrl, isRecording]);
 
   const startRecording = async () => {
     try {
@@ -59,13 +58,15 @@ export default function Home({ session, setSession }: HomeProps) {
       mediaRecorder.onstop = () => {
         const blob = new Blob(chunksRef.current, { type: 'video/webm' });
         const url = URL.createObjectURL(blob);
-        setVideoUrl(url);
+        
         if (videoRef.current) {
           videoRef.current.pause();
           videoRef.current.srcObject = null;
           videoRef.current.src = url;
           videoRef.current.load();
         }
+
+        setSession(prev => ({ ...prev, videoUrl: url }));
       };
 
       mediaRecorder.start();
@@ -161,11 +162,12 @@ export default function Home({ session, setSession }: HomeProps) {
             <video 
               ref={videoRef} 
               autoPlay 
-              controls={!isRecording && !!videoUrl}
+              controls={!isRecording && !!session.videoUrl}
               muted={isRecording}
               className="w-full h-full object-cover"
+              src={!isRecording && session.videoUrl ? session.videoUrl : undefined}
             />
-            {!isRecording && !videoUrl && (
+            {!isRecording && !session.videoUrl && (
               <div className="absolute inset-0 flex flex-col items-center justify-center text-zinc-500 space-y-2">
                 <Video className="w-12 h-12 opacity-20" />
                 <p className="text-sm">Camera preview will appear here</p>

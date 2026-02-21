@@ -75,4 +75,5 @@ export interface SessionState {
   flagBlurbs: Record<string, FlagBlurb>;
   fullSummary: FullSummary | null;
   sessionMetrics: SessionMetrics | null;
+  videoUrl: string | null;
 }
