@@ -5,27 +5,44 @@ import os
 import subprocess
 import numpy as np
 from datetime import datetime
+from dotenv import load_dotenv 
 from fer.fer import FER
 
+# Load tokens from .env
+load_dotenv() #
+TOKEN = os.getenv("GITHUB_TOKEN")
+USER = os.getenv("GITHUB_USER")
+REPO = os.getenv("GITHUB_REPO")
+
+def setup_git_remote():
+    """Configures the remote origin with the access token automatically."""
+    # Format: https://<TOKEN>@github.com/<USER>/<REPO>.git
+    remote_url = f"https://{TOKEN}@github.com/{USER}/{REPO}.git"
+    
+    try:
+        # Check if remote already exists
+        remotes = subprocess.check_output(["git", "remote"], text=True)
+        if "origin" in remotes:
+            subprocess.run(["git", "remote", "set-url", "origin", remote_url], check=True)
+        else:
+            subprocess.run(["git", "remote", "add", "origin", remote_url], check=True)
+        print("Git remote configured with token.")
+    except Exception as e:
+        print(f"Git Setup Error: {e}")
 
 def submit_to_github():
-    print("\nSubmitting data to GitHub...")
+    print("\nSubmitting to GitHub...")
     try:
-        # Stage the CSV file
         subprocess.run(["git", "add", "emotion_data.csv"], check=True)
-        
-        # Create a commit with a timestamp
-        commit_msg = f"Auto-upload: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-        subprocess.run(["git", "commit", "-m", commit_msg], check=True)
-        
-        # Push to the main branch
-        subprocess.run(["git", "push", "origin", "main"], check=True)
-        print("Successfully pushed to GitHub!")
+        msg = f"Session: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+        subprocess.run(["git", "commit", "-m", msg], check=True)
+        subprocess.run(["git", "push", "origin", "main"], check=True) #
+        print("Upload successful!")
     except subprocess.CalledProcessError as e:
-        print(f"Git Error: {e}. Make sure your repo is initialized and authenticated.")
+        print(f"Upload failed: {e}")
 
-
-# 1. Setup CSV file
+# --- Initialize ---
+setup_git_remote()
 csv_file = "emotion_data.csv"
 fields = ['Timestamp', 'Emotion_1', 'Score_1', 'Emotion_2', 'Score_2', 'Emotion_3', 'Score_3']
 
