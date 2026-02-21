@@ -1,5 +1,5 @@
 {
-  "name": "Emotion AI",
+  "name": "MoodMetrics Dashboard",
   "description": "A dashboard for analyzing audience emotions and engagement during presentations with Gemini-powered coaching insights.",
   "requestFramePermissions": [
     "camera",
