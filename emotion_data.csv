@@ -115,3 +115,11 @@ Timestamp,Emotion_1,Score_1,Emotion_2,Score_2,Emotion_3,Score_3
 09:16:43.778,neutral,0.4444,angry,0.2894,sad,0.1763
 09:16:44.288,neutral,0.6320,angry,0.2213,sad,0.0907
 09:16:44.816,neutral,0.6550,angry,0.1844,sad,0.0931
+09:22:32.099,angry,0.4300,neutral,0.2200,fear,0.2000
+09:22:32.622,angry,0.5272,fear,0.2067,neutral,0.1339
+09:22:33.139,neutral,0.5075,angry,0.2925,sad,0.0794
+09:22:33.656,neutral,0.5253,angry,0.1673,sad,0.1553
+09:22:34.151,surprise,0.2653,neutral,0.2593,angry,0.1993
+09:22:34.705,neutral,0.3038,fear,0.2225,sad,0.2050
+09:22:35.222,neutral,0.5719,angry,0.1519,sad,0.1506
+09:22:35.745,angry,0.4244,neutral,0.3688,sad,0.1294
