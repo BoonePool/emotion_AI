@@ -9,12 +9,6 @@ coverage/
 .DS_Store
 Thumbs.db
 
-# Env files
-.env
-.env.*
-.env*
-!.env.example
-
 # Python
 __pycache__/
 *.pyc
