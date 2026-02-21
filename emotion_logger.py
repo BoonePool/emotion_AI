@@ -66,7 +66,7 @@ detector = FER(mtcnn=False)
 cap = cv2.VideoCapture(0)
 
 last_update_time = time.time()
-interval = 0.5 
+interval = 1
 collected_emotions = []
 all_data_log = []
 
