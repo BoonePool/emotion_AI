@@ -1,0 +1,111 @@
+{
+  "overall": {
+    "total_samples": 100,
+    "distribution": {
+      "surprised": 0.24,
+      "confused": 0.27,
+      "neutral": 0.2,
+      "happy": 0.29
+    }
+  },
+  "timeline": [
+    {
+      "start": 1771686941.8331602,
+      "end": 1771686971.8331602,
+      "dominant_emotion": "happy",
+      "distribution": {
+        "surprised": 2,
+        "confused": 4,
+        "neutral": 4,
+        "happy": 5
+      },
+      "count": 15,
+      "start_str": "10:15:41",
+      "end_str": "10:16:11"
+    },
+    {
+      "start": 1771686971.8331602,
+      "end": 1771687001.8331602,
+      "dominant_emotion": "happy",
+      "distribution": {
+        "happy": 4,
+        "confused": 4,
+        "neutral": 3,
+        "surprised": 4
+      },
+      "count": 15,
+      "start_str": "10:16:11",
+      "end_str": "10:16:41"
+    },
+    {
+      "start": 1771687001.8331602,
+      "end": 1771687031.8331602,
+      "dominant_emotion": "surprised",
+      "distribution": {
+        "happy": 2,
+        "neutral": 3,
+        "surprised": 6,
+        "confused": 4
+      },
+      "count": 15,
+      "start_str": "10:16:41",
+      "end_str": "10:17:11"
+    },
+    {
+      "start": 1771687031.8331602,
+      "end": 1771687061.8331602,
+      "dominant_emotion": "happy",
+      "distribution": {
+        "neutral": 3,
+        "confused": 1,
+        "surprised": 4,
+        "happy": 7
+      },
+      "count": 15,
+      "start_str": "10:17:11",
+      "end_str": "10:17:41"
+    },
+    {
+      "start": 1771687061.8331602,
+      "end": 1771687091.8331602,
+      "dominant_emotion": "happy",
+      "distribution": {
+        "happy": 7,
+        "confused": 3,
+        "neutral": 4,
+        "surprised": 1
+      },
+      "count": 15,
+      "start_str": "10:17:41",
+      "end_str": "10:18:11"
+    },
+    {
+      "start": 1771687091.8331602,
+      "end": 1771687121.8331602,
+      "dominant_emotion": "confused",
+      "distribution": {
+        "neutral": 2,
+        "happy": 2,
+        "confused": 6,
+        "surprised": 5
+      },
+      "count": 15,
+      "start_str": "10:18:11",
+      "end_str": "10:18:41"
+    },
+    {
+      "start": 1771687121.8331602,
+      "end": 1771687151.8331602,
+      "dominant_emotion": "confused",
+      "distribution": {
+        "happy": 2,
+        "confused": 5,
+        "neutral": 1,
+        "surprised": 2
+      },
+      "count": 10,
+      "start_str": "10:18:41",
+      "end_str": "10:19:11"
+    }
+  ]
+}

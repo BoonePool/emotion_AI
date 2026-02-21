@@ -1,0 +1,28 @@
+# Node / React / Vite
+node_modules/
+build/
+dist/
+coverage/
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.*
+.env*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Data outputs / sensitive data (optional - keep if you don't want to share)
+aggregated_summary.json
+client_data/

@@ -1,0 +1,8 @@
+{
+  "name": "Emotion AI",
+  "description": "A dashboard for analyzing audience emotions and engagement during presentations with Gemini-powered coaching insights.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
