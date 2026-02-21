@@ -1,3 +1,6 @@
+## Dashboard Structure
+![Emotion AI Dashboard Structure](images/Emotion AI Dashboard.png)
+
 ## Run Locally
 
 **Prerequisites:**  Node.js
