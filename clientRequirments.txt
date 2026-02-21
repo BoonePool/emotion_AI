@@ -1,0 +1,6 @@
+opencv-python
+fer
+numpy
+python-dotenv
+google-generativeai
+mediapipe
