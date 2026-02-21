@@ -11,11 +11,9 @@ function cn(...inputs: ClassValue[]) {
 
 interface LayoutProps {
   children: React.ReactNode;
-  session: SessionState;
-  setSession: React.Dispatch<React.SetStateAction<SessionState>>;
 }
 
-export function Layout({ children, session }: LayoutProps) {
+export function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
   const navItems = [
@@ -28,15 +26,19 @@ export function Layout({ children, session }: LayoutProps) {
     <div className="min-h-screen bg-zinc-50 flex flex-col font-sans">
       <nav className="bg-white border-b border-zinc-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-rose-500 rounded-lg flex items-center justify-center">
-                <Activity className="text-white w-5 h-5" />
+          <div className="flex h-16 items-center">
+            {/* Left Section: Logo */}
+            <div className="flex-1 flex items-center">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-rose-500 rounded-lg flex items-center justify-center">
+                  <Activity className="text-white w-5 h-5" />
+                </div>
+                <span className="text-xl font-bold text-zinc-900 tracking-tight">MoodMetrics</span>
               </div>
-              <span className="text-xl font-bold text-zinc-900 tracking-tight">Emotion AI</span>
             </div>
             
-            <div className="hidden sm:flex space-x-8">
+            {/* Center Section: Navigation */}
+            <div className="hidden sm:flex space-x-8 h-full">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.path;
@@ -45,7 +47,7 @@ export function Layout({ children, session }: LayoutProps) {
                     key={item.name}
                     to={item.path}
                     className={cn(
-                      "flex items-center gap-2 px-1 pt-1 text-sm font-medium border-b-2 transition-colors",
+                      "flex items-center gap-2 px-1 pt-1 text-sm font-medium border-b-2 transition-colors h-full",
                       isActive 
                         ? "border-rose-500 text-rose-500" 
                         : "border-transparent text-zinc-500 hover:text-zinc-700 hover:border-zinc-300"
@@ -58,14 +60,9 @@ export function Layout({ children, session }: LayoutProps) {
               })}
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="text-right hidden md:block">
-                <p className="text-[10px] uppercase tracking-wider text-zinc-400 font-semibold">Current Session</p>
-                <p className="text-xs font-mono text-zinc-600">{session.sessionId}</p>
-              </div>
-              <button className="bg-zinc-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-800 transition-colors">
-                New Session
-              </button>
+            {/* Right Section: Empty (for balance) */}
+            <div className="flex-1 flex items-center justify-end">
+              {/* Session info removed as per request */}
             </div>
           </div>
         </div>
@@ -77,7 +74,7 @@ export function Layout({ children, session }: LayoutProps) {
       
       <footer className="bg-white border-t border-zinc-200 py-6">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-zinc-400 text-xs">© 2024 Emotion AI • Audience Analytics Dashboard</p>
+          <p className="text-zinc-400 text-xs">© 2026 MoodMetrics • Audience Analytics Dashboard</p>
         </div>
       </footer>
     </div>
