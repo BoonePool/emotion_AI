@@ -3,3 +3,14 @@ fer
 numpy
 python-dotenv
 google-generativeai
+os
+cv2
+time
+json
+subprocess
+numpy
+threading
+datetime 
+dotenv 
+fer.fer 
+mediapipe
