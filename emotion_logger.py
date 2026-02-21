@@ -2,9 +2,28 @@ import cv2
 import time
 import csv
 import os
+import subprocess
 import numpy as np
 from datetime import datetime
-from fer.fer import FER # Direct import for compatibility
+from fer.fer import FER
+
+
+def submit_to_github():
+    print("\nSubmitting data to GitHub...")
+    try:
+        # Stage the CSV file
+        subprocess.run(["git", "add", "emotion_data.csv"], check=True)
+        
+        # Create a commit with a timestamp
+        commit_msg = f"Auto-upload: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+        subprocess.run(["git", "commit", "-m", commit_msg], check=True)
+        
+        # Push to the main branch
+        subprocess.run(["git", "push", "origin", "main"], check=True)
+        print("Successfully pushed to GitHub!")
+    except subprocess.CalledProcessError as e:
+        print(f"Git Error: {e}. Make sure your repo is initialized and authenticated.")
+
 
 # 1. Setup CSV file
 csv_file = "emotion_data.csv"
@@ -74,3 +93,4 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
+submit_to_github()
