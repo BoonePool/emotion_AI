@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.env
+aggregated_summary.json   # if you don't want to share data files
+client_data/              # if you have raw client data
