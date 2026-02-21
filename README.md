@@ -1,5 +1,5 @@
 ## Dashboard Structure
-![Emotion AI Dashboard Structure](images/Emotion AI Dashboard.png)
+![Emotion AI Dashboard Structure](images/Emotion%20AI%20Dashboard.png)
 
 ## Run Locally
 
