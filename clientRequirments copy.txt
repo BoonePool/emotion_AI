@@ -1,10 +1,11 @@
-keras==3.13.2
-mediapipe==0.10.14
+# Core Vision & Processing
+opencv-python==4.8.1.78
 numpy==1.26.4
-opencv-python==4.11.0.86
-protobuf==4.25.8
-tensorflow==2.15.1
-torch==2.2.2
-torchvision==0.17.2
-dotenv
+mediapipe==0.10.11
 fer==25.10.3
+
+# Backend & Utilities
+tensorflow==2.15.0
+python-dotenv==1.0.1
+
+GitPython==3.1.41
