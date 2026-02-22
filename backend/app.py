@@ -31,7 +31,10 @@ def extract_audio(video_path, audio_path):
     try:
         subprocess.run(cmd, check=True, capture_output=True, text=True)
     except subprocess.CalledProcessError as e:
-        raise Exception(f"FFmpeg error: {e.stderr}")
+        if "Output file is empty" in e.stderr:
+            return # No audio track, but not a critical error
+        else:
+            raise Exception(f"FFmpeg error: {e.stderr}")
 
 def transcribe_audio(audio_path):
     """Transcribe audio file using Whisper."""

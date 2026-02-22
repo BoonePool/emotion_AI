@@ -189,6 +189,32 @@ export default function Report({ session }: ReportProps) {
           </div>
         </div>
       </div>
+      {/* Transcript */}
+{session.transcript && (
+  <div className="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm mt-8">
+    <h3 className="text-lg font-bold text-zinc-900 mb-4">Transcript</h3>
+    <div className="max-h-96 overflow-y-auto">
+      <p className="text-zinc-700 whitespace-pre-wrap">{session.transcript}</p>
+    </div>
+    {session.transcriptSegments && session.transcriptSegments.length > 0 && (
+      <details className="mt-4">
+        <summary className="text-sm text-zinc-500 cursor-pointer hover:text-zinc-700 font-medium">
+          View with timestamps
+        </summary>
+        <div className="mt-3 space-y-2 text-xs bg-zinc-50 p-4 rounded-lg">
+          {session.transcriptSegments.map((seg, idx) => (
+            <div key={idx} className="flex gap-3">
+              <span className="text-zinc-400 font-mono shrink-0">
+                {seg.start.toFixed(1)}s – {seg.end.toFixed(1)}s
+              </span>
+              <span className="text-zinc-700">{seg.text}</span>
+            </div>
+          ))}
+        </div>
+      </details>
+    )}
+  </div>
+)}
     </div>
   );
 }
