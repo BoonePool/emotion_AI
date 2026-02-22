@@ -1,9 +1,21 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Flag, SessionMetrics, FlagBlurb, FullSummary } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
+const getAI = () => {
+  // Try to get the key from various possible locations
+  const apiKey = 
+    process.env.GEMINI_API_KEY || 
+    (process as any).env?.API_KEY || 
+    (import.meta as any).env?.VITE_GEMINI_API_KEY;
+
+  if (!apiKey || apiKey === "") {
+    throw new Error("No Gemini API key found. Please ensure you have selected a key in the platform or set GEMINI_API_KEY.");
+  }
+  return new GoogleGenAI({ apiKey });
+};
 
 export const generateFlagBlurb = async (flag: Flag, metrics: SessionMetrics): Promise<FlagBlurb> => {
+  const ai = getAI();
   const response = await ai.models.generateContent({
     model: "gemini-3-flash-preview",
     contents: `Analyze this presentation moment:
@@ -37,6 +49,7 @@ export const generateFullSummary = async (
   flags: Flag[],
   dominantEmotions: { emotion: string; value: number }[]
 ): Promise<FullSummary> => {
+  const ai = getAI();
   const response = await ai.models.generateContent({
     model: "gemini-3-flash-preview",
     contents: `Generate a full presentation summary report.

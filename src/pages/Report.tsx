@@ -108,7 +108,9 @@ export default function Report({ session }: ReportProps) {
                     <Cell key={`cell-${index}`} fill={EMOTION_COLORS[entry.name as keyof typeof EMOTION_COLORS] || '#6366f1'} />
                   ))}
                 </Pie>
-                <Tooltip />
+                <Tooltip 
+                  formatter={(value: number) => value.toFixed(3)}
+                />
                 <Legend verticalAlign="bottom" height={36}/>
               </RePieChart>
             </ResponsiveContainer>
@@ -133,7 +135,10 @@ export default function Report({ session }: ReportProps) {
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f4f4f5" />
                 <XAxis dataKey="t_s" hide />
                 <YAxis domain={[0, 1]} tick={{ fontSize: 10 }} axisLine={false} tickLine={false} />
-                <Tooltip />
+                <Tooltip 
+                  formatter={(value: number) => value.toFixed(3)}
+                  labelFormatter={(label: number) => `${label}s`}
+                />
                 <Area type="monotone" dataKey="engagement_mean" stroke="#10b981" fillOpacity={1} fill="url(#colorEngage)" strokeWidth={2} />
               </AreaChart>
             </ResponsiveContainer>
@@ -152,7 +157,10 @@ export default function Report({ session }: ReportProps) {
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f4f4f5" />
                 <XAxis dataKey="t_s" hide />
                 <YAxis domain={[0, 1]} tick={{ fontSize: 10 }} axisLine={false} tickLine={false} />
-                <Tooltip />
+                <Tooltip 
+                  formatter={(value: number) => value.toFixed(3)}
+                  labelFormatter={(label: number) => `${label}s`}
+                />
                 <Legend />
                 <Line type="monotone" dataKey="happy" stroke={EMOTION_COLORS.happy} dot={false} strokeWidth={2} />
                 <Line type="monotone" dataKey="neutral" stroke={EMOTION_COLORS.neutral} dot={false} strokeWidth={2} />

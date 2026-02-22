@@ -33,22 +33,21 @@ export default function Home({ session, setSession }: HomeProps) {
     const video = videoRef.current;
     if (!video) return;
 
+    // Explicitly set muted property to ensure sound works on playback
+    // We mute during recording to prevent feedback/echo
+    video.muted = isRecording;
+
     const handleTimeUpdate = () => setCurrentTime(video.currentTime);
     const handleDurationChange = () => setDuration(video.duration);
 
     video.addEventListener('timeupdate', handleTimeUpdate);
     video.addEventListener('durationchange', handleDurationChange);
     
-    // If we have a videoUrl but no srcObject (not recording), make sure video is loaded
-    if (session.videoUrl && !isRecording && !video.src) {
-      video.src = session.videoUrl;
-    }
-
     return () => {
       video.removeEventListener('timeupdate', handleTimeUpdate);
       video.removeEventListener('durationchange', handleDurationChange);
     };
-  }, [session.videoUrl, isRecording]);
+  }, [isRecording]);
 
   const startRecording = async () => {
     try {
@@ -148,6 +147,11 @@ export default function Home({ session, setSession }: HomeProps) {
   const handleGenerateBlurb = async () => {
     if (!selectedFlag || !session.sessionMetrics) return;
     
+    // Check if API key is selected if using a platform that requires it
+    if (window.aistudio && !(await window.aistudio.hasSelectedApiKey())) {
+      await window.aistudio.openSelectKey();
+    }
+
     setIsGeneratingBlurb(true);
     try {
       const blurb = await generateFlagBlurb(selectedFlag, session.sessionMetrics);
@@ -155,8 +159,13 @@ export default function Home({ session, setSession }: HomeProps) {
         ...prev,
         flagBlurbs: { ...prev.flagBlurbs, [selectedFlag.flag_id]: blurb }
       }));
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error generating blurb:", err);
+      const errorMessage = err.message || "Unknown error";
+      if (errorMessage.includes("API_KEY") || errorMessage.includes("key")) {
+        alert("Gemini API Key issue. Please ensure you have selected a valid API key.");
+        if (window.aistudio) await window.aistudio.openSelectKey();
+      }
     } finally {
       setIsGeneratingBlurb(false);
     }
@@ -201,9 +210,8 @@ export default function Home({ session, setSession }: HomeProps) {
           <div className="flex-1 bg-zinc-900 relative aspect-video flex items-center justify-center">
             <video 
               ref={videoRef} 
-              autoPlay 
+              autoPlay={isRecording} 
               controls={!isRecording && !!session.videoUrl}
-              muted={isRecording}
               className="w-full h-full object-cover"
               src={!isRecording && session.videoUrl ? session.videoUrl : undefined}
             />
@@ -369,6 +377,7 @@ export default function Home({ session, setSession }: HomeProps) {
                   <Tooltip 
                     cursor={{ fill: '#f8fafc' }}
                     contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
+                    formatter={(value: number) => value.toFixed(3)}
                   />
                   <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={32}>
                     {(selectedFlag?.top_emotions || []).map((entry, index) => (
