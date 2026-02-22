@@ -1,16 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { SessionState, Flag, FlagBlurb } from '../types';
-import { Play, Square, Video, AlertCircle, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Play, Square, Video, AlertCircle, Sparkles, Upload, ChevronLeft, ChevronRight } from 'lucide-react';
 import { generateFlagBlurb } from '../services/geminiService';
-import { generateMockTimeseries, generateMockFlags, computeSessionMetrics } from '../data/mockData';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { toast } from 'sonner';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+// Backend API URL – change to your Flask server address
+const API_URL = 'http://localhost:5000';
 
 interface HomeProps {
   session: SessionState;
@@ -19,6 +22,8 @@ interface HomeProps {
 
 export default function Home({ session, setSession }: HomeProps) {
   const [isRecording, setIsRecording] = useState(false);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const [selectedFlag, setSelectedFlag] = useState<Flag | null>(session.flags[0] || null);
   const [isGeneratingBlurb, setIsGeneratingBlurb] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -40,8 +45,9 @@ export default function Home({ session, setSession }: HomeProps) {
       video.removeEventListener('timeupdate', handleTimeUpdate);
       video.removeEventListener('durationchange', handleDurationChange);
     };
-  }, [session.videoUrl, isRecording]);
+  }, [videoUrl, isRecording]);
 
+  // ---------- Recording ----------
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
@@ -58,21 +64,20 @@ export default function Home({ session, setSession }: HomeProps) {
       mediaRecorder.onstop = () => {
         const blob = new Blob(chunksRef.current, { type: 'video/webm' });
         const url = URL.createObjectURL(blob);
-        
+        setVideoUrl(url);
         if (videoRef.current) {
           videoRef.current.pause();
           videoRef.current.srcObject = null;
           videoRef.current.src = url;
           videoRef.current.load();
         }
-
-        setSession(prev => ({ ...prev, videoUrl: url }));
       };
 
       mediaRecorder.start();
       setIsRecording(true);
     } catch (err) {
       console.error("Error accessing camera:", err);
+      toast.error('Could not access camera or microphone.');
     }
   };
 
@@ -81,30 +86,113 @@ export default function Home({ session, setSession }: HomeProps) {
       mediaRecorderRef.current.stop();
       mediaRecorderRef.current.stream.getTracks().forEach(track => track.stop());
       setIsRecording(false);
-      
-      // Simulate analysis complete by generating new mock data for the recording
-      // In a real app, this would be where the video is sent to a backend
-      setTimeout(() => {
-        const newTs = generateMockTimeseries(Math.max(10, Math.floor(videoRef.current?.duration || 30)));
-        const newFlags = generateMockFlags(newTs);
-        const newMetrics = computeSessionMetrics(newTs);
-        
-        setSession(prev => ({
-          ...prev,
-          timeseries: newTs,
-          flags: newFlags,
-          sessionMetrics: newMetrics,
-          flagBlurbs: {}, // Clear old blurbs
-          fullSummary: null // Clear old summary
-        }));
-        
-        if (newFlags.length > 0) {
-          setSelectedFlag(newFlags[0]);
+
+      // Upload the recorded blob to the backend
+      mediaRecorderRef.current.onstop = async () => {
+        const blob = new Blob(chunksRef.current, { type: 'video/webm' });
+        const url = URL.createObjectURL(blob);
+        setVideoUrl(url);    
+        const formData = new FormData();
+        formData.append('video', blob, 'recording.webm');
+
+        setIsAnalyzing(true);
+        try {
+          const response = await fetch(`${API_URL}/analyze`, {
+            method: 'POST',
+            body: formData,
+          });
+          if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Analysis failed');
+          }
+          const data = await response.json();
+
+          setSession(prev => ({
+            ...prev,
+            timeseries: data.timeseries,
+            flags: data.flags,
+            sessionMetrics: data.metrics,
+            transcript: data.transcript,
+            transcriptSegments: data.transcript_segments,
+            videoUrl: url,
+            flagBlurbs: {},
+            fullSummary: null,
+          }));
+          console.log('Transcript stored:', data.transcript);
+          console.log('Segments stored:', data.transcript_segments);
+
+          if (data.flags.length > 0) {
+            setSelectedFlag(data.flags[0]);
+          }
+
+          toast.success('Recording analyzed successfully!');
+        } catch (err) {
+          console.error('Upload failed', err);
+          toast.error('Video analysis failed. Check backend.');
+        } finally {
+          setIsAnalyzing(false);
         }
-      }, 500);
+      };
     }
   };
 
+  // ---------- File Upload ----------
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    setVideoUrl(url); 
+
+    const formData = new FormData();
+    formData.append('video', file);
+
+    setIsAnalyzing(true);
+    try {
+      const response = await fetch('http://localhost:5000/analyze', {
+        method: 'POST',
+        body: formData,
+      });
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Analysis failed');
+      }
+      const data = await response.json();
+
+      setSession(prev => ({
+        ...prev,
+        timeseries: data.timeseries,
+        flags: data.flags,
+        sessionMetrics: data.metrics,
+        flagBlurbs: {},
+        fullSummary: null,
+        transcript: data.transcript,
+        transcriptSegments: data.transcript_segments,
+        videoUrl: url,                       // ← add this line
+      }));
+
+      if (data.flags.length > 0) {
+        setSelectedFlag(data.flags[0]);
+      }
+
+      // Create a local video URL for playback
+      if (videoRef.current) {
+        videoRef.current.srcObject = null;
+        videoRef.current.src = url;
+        videoRef.current.load();
+      }
+
+      toast.success('Video analyzed successfully!');
+    } catch (err) {
+      console.error('Upload failed', err);
+      toast.error('Video analysis failed. Check backend.');
+    } finally {
+      setIsAnalyzing(false);
+    }
+    // Reset file input
+    e.target.value = '';
+  };
+
+  // ---------- Gemini Coaching ----------
   const handleGenerateBlurb = async () => {
     if (!selectedFlag || !session.sessionMetrics) return;
     
@@ -116,7 +204,7 @@ export default function Home({ session, setSession }: HomeProps) {
         flagBlurbs: { ...prev.flagBlurbs, [selectedFlag.flag_id]: blurb }
       }));
     } catch (err) {
-      console.error("Error generating blurb:", err);
+      toast.error('Failed to generate coaching insight. Check your API key.');
     } finally {
       setIsGeneratingBlurb(false);
     }
@@ -124,9 +212,9 @@ export default function Home({ session, setSession }: HomeProps) {
 
   const jumpToTime = (t_s: number) => {
     if (videoRef.current) {
-      const duration = videoRef.current.duration;
-      if (isFinite(duration) && duration > 0) {
-        videoRef.current.currentTime = t_s % duration;
+      const dur = videoRef.current.duration;
+      if (isFinite(dur) && dur > 0) {
+        videoRef.current.currentTime = t_s % dur;
       }
     }
   };
@@ -151,10 +239,10 @@ export default function Home({ session, setSession }: HomeProps) {
               <Video className="w-4 h-4 text-rose-500" />
               Record Presentation
             </h2>
-            {isRecording && (
+            {(isRecording || isAnalyzing) && (
               <span className="flex items-center gap-1.5 text-xs font-bold text-red-600 animate-pulse">
                 <div className="w-2 h-2 bg-red-600 rounded-full" />
-                REC
+                {isAnalyzing ? 'ANALYZING' : 'REC'}
               </span>
             )}
           </div>
@@ -162,27 +250,57 @@ export default function Home({ session, setSession }: HomeProps) {
             <video 
               ref={videoRef} 
               autoPlay 
-              controls={!isRecording && !!session.videoUrl}
+              controls={!isRecording && !!videoUrl}
               muted={isRecording}
               className="w-full h-full object-cover"
-              src={!isRecording && session.videoUrl ? session.videoUrl : undefined}
             />
-            {!isRecording && !session.videoUrl && (
+            {!isRecording && !videoUrl && !isAnalyzing && (
               <div className="absolute inset-0 flex flex-col items-center justify-center text-zinc-500 space-y-2">
                 <Video className="w-12 h-12 opacity-20" />
                 <p className="text-sm">Camera preview will appear here</p>
               </div>
             )}
+            {isAnalyzing && (
+              <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                <div className="flex flex-col items-center gap-3 text-white">
+                  <div className="w-10 h-10 border-4 border-white border-t-transparent rounded-full animate-spin" />
+                  <p className="text-sm font-medium">Analyzing video...</p>
+                </div>
+              </div>
+            )}
           </div>
           <div className="p-4 bg-zinc-50 flex gap-3">
             {!isRecording ? (
-              <button 
-                onClick={startRecording}
-                className="flex-1 bg-rose-500 text-white py-2.5 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-rose-600 transition-colors shadow-sm"
-              >
-                <Play className="w-4 h-4 fill-current" />
-                Start Recording
-              </button>
+              <>
+                <button 
+                  onClick={startRecording}
+                  className="flex-1 bg-rose-500 text-white py-2.5 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-rose-600 transition-colors shadow-sm"
+                >
+                  <Play className="w-4 h-4 fill-current" />
+                  Start Recording
+                </button>
+                {/* Upload button */}
+                <input
+                  type="file"
+                  accept="video/*"
+                  onChange={handleFileUpload}
+                  className="hidden"
+                  id="video-upload"
+                  disabled={isAnalyzing}
+                />
+                <label
+                  htmlFor="video-upload"
+                  className={cn(
+                    "flex-1 py-2.5 rounded-xl font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer",
+                    isAnalyzing
+                      ? "bg-zinc-200 text-zinc-400 cursor-not-allowed"
+                      : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200"
+                  )}
+                >
+                  <Upload className="w-4 h-4" />
+                  Upload Video
+                </label>
+              </>
             ) : (
               <button 
                 onClick={stopRecording}
