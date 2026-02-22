@@ -367,6 +367,7 @@ export default function Home({ session, setSession }: HomeProps) {
                   <Tooltip 
                     cursor={{ fill: '#f8fafc' }}
                     contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
+                    formatter={(value: number) => value.toFixed(3)} // This handles the rounding
                   />
                   <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={32}>
                     {(selectedFlag?.top_emotions || []).map((entry, index) => (
