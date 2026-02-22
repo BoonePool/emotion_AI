@@ -66,7 +66,7 @@ def get_image_points(landmarks, w, h):
     return np.array([(int(landmarks.landmark[idx].x * w), int(landmarks.landmark[idx].y * h)) 
                      for idx in LANDMARK_IDS], dtype=np.float32)
 
-def process_video(video_path, fps_target=2):
+def process_video(video_path, fps_target=1):
     """Process video file, return list of per‑second aggregated data."""
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
