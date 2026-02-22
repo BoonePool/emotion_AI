@@ -33,22 +33,21 @@ export default function Home({ session, setSession }: HomeProps) {
     const video = videoRef.current;
     if (!video) return;
 
+    // Explicitly set muted property to ensure sound works on playback
+    // We mute during recording to prevent feedback/echo
+    video.muted = isRecording;
+
     const handleTimeUpdate = () => setCurrentTime(video.currentTime);
     const handleDurationChange = () => setDuration(video.duration);
 
     video.addEventListener('timeupdate', handleTimeUpdate);
     video.addEventListener('durationchange', handleDurationChange);
     
-    // If we have a videoUrl but no srcObject (not recording), make sure video is loaded
-    if (session.videoUrl && !isRecording && !video.src) {
-      video.src = session.videoUrl;
-    }
-
     return () => {
       video.removeEventListener('timeupdate', handleTimeUpdate);
       video.removeEventListener('durationchange', handleDurationChange);
     };
-  }, [session.videoUrl, isRecording]);
+  }, [isRecording]);
 
   const startRecording = async () => {
     try {
@@ -201,9 +200,8 @@ export default function Home({ session, setSession }: HomeProps) {
           <div className="flex-1 bg-zinc-900 relative aspect-video flex items-center justify-center">
             <video 
               ref={videoRef} 
-              autoPlay 
+              autoPlay={isRecording} 
               controls={!isRecording && !!session.videoUrl}
-              muted={isRecording}
               className="w-full h-full object-cover"
               src={!isRecording && session.videoUrl ? session.videoUrl : undefined}
             />
