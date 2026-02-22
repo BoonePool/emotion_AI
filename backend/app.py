@@ -13,11 +13,12 @@ from datetime import datetime
 from collections import defaultdict
 import threading
 import concurrent.futures
+from pydub import AudioSegment
 
 app = Flask(__name__)
 CORS(app)  # Allow frontend to call this API
 print("Loading Whisper model (this may take a while on first run)...")
-whisper_model = whisper.load_model("base")
+whisper_model = whisper.load_model("medium")
 print("Whisper model loaded.")
 # ---------- NEW HELPER FUNCTIONS FOR AUDIO ----------
 def extract_audio(video_path, audio_path):
@@ -35,6 +36,13 @@ def extract_audio(video_path, audio_path):
             return # No audio track, but not a critical error
         else:
             raise Exception(f"FFmpeg error: {e.stderr}")
+
+def enhance_audio(input_path, output_path):
+    """Apply a simple gain to the audio."""
+    audio = AudioSegment.from_file(input_path)
+    # Apply a 10dB gain to make speech clearer
+    enhanced = audio + 10
+    enhanced.export(output_path, format="wav")
 
 def transcribe_audio(audio_path):
     """Transcribe audio file using Whisper."""
@@ -214,6 +222,10 @@ def process_transcription(video_path):
         audio_path = tmp_audio.name
     try:
         extract_audio(video_path, audio_path)
+        # Enhance the audio to improve transcription quality
+        enhanced_audio_path = audio_path.replace('.wav', '_enhanced.wav')
+        enhance_audio(audio_path, enhanced_audio_path)
+
         return transcribe_audio(audio_path)
     finally:
         if os.path.exists(audio_path):
