@@ -1,0 +1,1762 @@
+[
+    {
+        "timestamp": "2026-02-21 14:21:36.805",
+        "user": "5",
+        "distracted": false,
+        "pitch": 0.0,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.385
+            },
+            {
+                "emotion": "fear",
+                "score": 0.265
+            },
+            {
+                "emotion": "sad",
+                "score": 0.2
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:37.325",
+        "user": "5",
+        "distracted": false,
+        "pitch": 2.14,
+        "top_emotions": [
+            {
+                "emotion": "fear",
+                "score": 0.3213
+            },
+            {
+                "emotion": "sad",
+                "score": 0.298
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.1973
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:37.836",
+        "user": "5",
+        "distracted": false,
+        "pitch": 3.77,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.3593
+            },
+            {
+                "emotion": "sad",
+                "score": 0.2527
+            },
+            {
+                "emotion": "angry",
+                "score": 0.2407
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:38.353",
+        "user": "5",
+        "distracted": false,
+        "pitch": 3.48,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.4542
+            },
+            {
+                "emotion": "angry",
+                "score": 0.25
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1933
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:38.887",
+        "user": "5",
+        "distracted": false,
+        "pitch": 4.98,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.4692
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1969
+            },
+            {
+                "emotion": "fear",
+                "score": 0.1469
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:39.399",
+        "user": "5",
+        "distracted": false,
+        "pitch": 1.7,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.5987
+            },
+            {
+                "emotion": "angry",
+                "score": 0.102
+            },
+            {
+                "emotion": "happy",
+                "score": 0.0993
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:39.913",
+        "user": "5",
+        "distracted": false,
+        "pitch": 5.8,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.3613
+            },
+            {
+                "emotion": "happy",
+                "score": 0.3413
+            },
+            {
+                "emotion": "fear",
+                "score": 0.1207
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:40.430",
+        "user": "5",
+        "distracted": false,
+        "pitch": -1.58,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.5787
+            },
+            {
+                "emotion": "fear",
+                "score": 0.1473
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1447
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:40.944",
+        "user": "5",
+        "distracted": false,
+        "pitch": -2.85,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.6033
+            },
+            {
+                "emotion": "angry",
+                "score": 0.232
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1013
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:41.458",
+        "user": "5",
+        "distracted": false,
+        "pitch": -3.02,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.3073
+            },
+            {
+                "emotion": "surprise",
+                "score": 0.2607
+            },
+            {
+                "emotion": "fear",
+                "score": 0.248
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:41.968",
+        "user": "5",
+        "distracted": false,
+        "pitch": -7.85,
+        "top_emotions": [
+            {
+                "emotion": "happy",
+                "score": 0.384
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.3713
+            },
+            {
+                "emotion": "sad",
+                "score": 0.096
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:42.501",
+        "user": "5",
+        "distracted": false,
+        "pitch": 3.94,
+        "top_emotions": [
+            {
+                "emotion": "happy",
+                "score": 0.6613
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.1325
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1219
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:43.013",
+        "user": "5",
+        "distracted": false,
+        "pitch": 2.48,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.4947
+            },
+            {
+                "emotion": "angry",
+                "score": 0.2427
+            },
+            {
+                "emotion": "sad",
+                "score": 0.2033
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:43.522",
+        "user": "5",
+        "distracted": false,
+        "pitch": 6.0,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.5447
+            },
+            {
+                "emotion": "angry",
+                "score": 0.292
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1307
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:44.031",
+        "user": "5",
+        "distracted": false,
+        "pitch": -0.55,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.6543
+            },
+            {
+                "emotion": "sad",
+                "score": 0.155
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1543
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:21:44.543",
+        "user": "5",
+        "distracted": false,
+        "pitch": 6.24,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.604
+            },
+            {
+                "emotion": "angry",
+                "score": 0.2167
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1513
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:04.166",
+        "user": "5",
+        "distracted": false,
+        "pitch": 2.23,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.65
+            },
+            {
+                "emotion": "angry",
+                "score": 0.16
+            },
+            {
+                "emotion": "sad",
+                "score": 0.115
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:04.653",
+        "user": "5",
+        "distracted": false,
+        "pitch": 2.24,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.635
+            },
+            {
+                "emotion": "angry",
+                "score": 0.19
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1079
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:05.173",
+        "user": "5",
+        "distracted": false,
+        "pitch": -6.04,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.7473
+            },
+            {
+                "emotion": "angry",
+                "score": 0.094
+            },
+            {
+                "emotion": "sad",
+                "score": 0.056
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:05.681",
+        "user": "5",
+        "distracted": false,
+        "pitch": -11.09,
+        "top_emotions": [
+            {
+                "emotion": "happy",
+                "score": 0.4593
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.4213
+            },
+            {
+                "emotion": "sad",
+                "score": 0.0413
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:06.186",
+        "user": "5",
+        "distracted": false,
+        "pitch": 2.15,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.624
+            },
+            {
+                "emotion": "happy",
+                "score": 0.1367
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1247
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:06.692",
+        "user": "5",
+        "distracted": false,
+        "pitch": 1.02,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.5443
+            },
+            {
+                "emotion": "angry",
+                "score": 0.315
+            },
+            {
+                "emotion": "sad",
+                "score": 0.0779
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:07.203",
+        "user": "5",
+        "distracted": false,
+        "pitch": 0.58,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.6687
+            },
+            {
+                "emotion": "angry",
+                "score": 0.182
+            },
+            {
+                "emotion": "sad",
+                "score": 0.0673
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:07.714",
+        "user": "5",
+        "distracted": false,
+        "pitch": 0.33,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.755
+            },
+            {
+                "emotion": "sad",
+                "score": 0.095
+            },
+            {
+                "emotion": "angry",
+                "score": 0.094
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:08.226",
+        "user": "5",
+        "distracted": false,
+        "pitch": 4.08,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.445
+            },
+            {
+                "emotion": "sad",
+                "score": 0.28
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1383
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:08.740",
+        "user": "5",
+        "distracted": false,
+        "pitch": 5.06,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.395
+            },
+            {
+                "emotion": "sad",
+                "score": 0.2625
+            },
+            {
+                "emotion": "fear",
+                "score": 0.1688
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:09.257",
+        "user": "5",
+        "distracted": false,
+        "pitch": -10.48,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.4721
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1679
+            },
+            {
+                "emotion": "fear",
+                "score": 0.1357
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:09.773",
+        "user": "5",
+        "distracted": false,
+        "pitch": -13.66,
+        "top_emotions": [
+            {
+                "emotion": "happy",
+                "score": 0.5667
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.328
+            },
+            {
+                "emotion": "sad",
+                "score": 0.0427
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:10.302",
+        "user": "5",
+        "distracted": false,
+        "pitch": -8.35,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.4627
+            },
+            {
+                "emotion": "happy",
+                "score": 0.4
+            },
+            {
+                "emotion": "sad",
+                "score": 0.048
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:10.808",
+        "user": "5",
+        "distracted": false,
+        "pitch": -1.5,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.772
+            },
+            {
+                "emotion": "happy",
+                "score": 0.07
+            },
+            {
+                "emotion": "fear",
+                "score": 0.0547
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:11.321",
+        "user": "5",
+        "distracted": false,
+        "pitch": -0.24,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.8147
+            },
+            {
+                "emotion": "angry",
+                "score": 0.0687
+            },
+            {
+                "emotion": "fear",
+                "score": 0.0493
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:11.834",
+        "user": "5",
+        "distracted": false,
+        "pitch": -2.59,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.7233
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1327
+            },
+            {
+                "emotion": "sad",
+                "score": 0.07
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:12.345",
+        "user": "5",
+        "distracted": true,
+        "pitch": -28.17,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.4538
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1925
+            },
+            {
+                "emotion": "sad",
+                "score": 0.175
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:12.853",
+        "user": "5",
+        "distracted": true,
+        "pitch": -26.19,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.275
+            },
+            {
+                "emotion": "sad",
+                "score": 0.26
+            },
+            {
+                "emotion": "angry",
+                "score": 0.2
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:13.871",
+        "user": "5",
+        "distracted": false,
+        "pitch": -8.88,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.486
+            },
+            {
+                "emotion": "angry",
+                "score": 0.281
+            },
+            {
+                "emotion": "sad",
+                "score": 0.084
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:14.389",
+        "user": "5",
+        "distracted": false,
+        "pitch": -2.43,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.784
+            },
+            {
+                "emotion": "surprise",
+                "score": 0.084
+            },
+            {
+                "emotion": "angry",
+                "score": 0.0693
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 14:23:14.892",
+        "user": "5",
+        "distracted": false,
+        "pitch": -3.12,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.6547
+            },
+            {
+                "emotion": "fear",
+                "score": 0.1233
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1073
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:05:56.044",
+        "user": "5",
+        "distracted": false,
+        "pitch": -13.62,
+        "top_emotions": [
+            {
+                "emotion": "angry",
+                "score": 0.44
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.325
+            },
+            {
+                "emotion": "sad",
+                "score": 0.135
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:05:57.039",
+        "user": "5",
+        "distracted": false,
+        "pitch": -11.07,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.4405
+            },
+            {
+                "emotion": "angry",
+                "score": 0.3148
+            },
+            {
+                "emotion": "fear",
+                "score": 0.1552
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:05:58.054",
+        "user": "5",
+        "distracted": false,
+        "pitch": -18.81,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.4827
+            },
+            {
+                "emotion": "happy",
+                "score": 0.4368
+            },
+            {
+                "emotion": "angry",
+                "score": 0.0432
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:05:59.056",
+        "user": "5",
+        "distracted": true,
+        "pitch": -31.52,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.4425
+            },
+            {
+                "emotion": "happy",
+                "score": 0.2455
+            },
+            {
+                "emotion": "angry",
+                "score": 0.175
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:06:01.069",
+        "user": "5",
+        "distracted": false,
+        "pitch": -13.99,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.5825
+            },
+            {
+                "emotion": "angry",
+                "score": 0.2256
+            },
+            {
+                "emotion": "sad",
+                "score": 0.0663
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:06:02.117",
+        "user": "5",
+        "distracted": true,
+        "pitch": -33.09,
+        "top_emotions": [
+            {
+                "emotion": "happy",
+                "score": 0.4962
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.3154
+            },
+            {
+                "emotion": "angry",
+                "score": 0.0815
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:06:03.136",
+        "user": "5",
+        "distracted": false,
+        "pitch": 15.95,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.6221
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1786
+            },
+            {
+                "emotion": "fear",
+                "score": 0.1007
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:39.351",
+        "user": "5",
+        "distracted": false,
+        "pitch": -1.98,
+        "top_emotions": [
+            {
+                "emotion": "fear",
+                "score": 0.35
+            },
+            {
+                "emotion": "angry",
+                "score": 0.285
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.19
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:40.353",
+        "user": "5",
+        "distracted": false,
+        "pitch": 0.59,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.602
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1272
+            },
+            {
+                "emotion": "fear",
+                "score": 0.1176
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:41.393",
+        "user": "5",
+        "distracted": false,
+        "pitch": 2.31,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.3339
+            },
+            {
+                "emotion": "angry",
+                "score": 0.2665
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1783
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:42.388",
+        "user": "5",
+        "distracted": false,
+        "pitch": 11.91,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.318
+            },
+            {
+                "emotion": "angry",
+                "score": 0.309
+            },
+            {
+                "emotion": "sad",
+                "score": 0.146
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:43.390",
+        "user": "5",
+        "distracted": false,
+        "pitch": -17.34,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.3157
+            },
+            {
+                "emotion": "angry",
+                "score": 0.309
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1952
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:44.408",
+        "user": "5",
+        "distracted": false,
+        "pitch": -2.28,
+        "top_emotions": [
+            {
+                "emotion": "fear",
+                "score": 0.3289
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.2772
+            },
+            {
+                "emotion": "angry",
+                "score": 0.2422
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:45.438",
+        "user": "5",
+        "distracted": true,
+        "pitch": -23.09,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.3211
+            },
+            {
+                "emotion": "sad",
+                "score": 0.3016
+            },
+            {
+                "emotion": "happy",
+                "score": 0.1474
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:46.464",
+        "user": "5",
+        "distracted": true,
+        "pitch": -24.88,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.5214
+            },
+            {
+                "emotion": "fear",
+                "score": 0.2186
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1429
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:47.476",
+        "user": "5",
+        "distracted": true,
+        "pitch": -30.2,
+        "top_emotions": [
+            {
+                "emotion": "fear",
+                "score": 0.278
+            },
+            {
+                "emotion": "happy",
+                "score": 0.26
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.202
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:48.487",
+        "user": "5",
+        "distracted": false,
+        "pitch": 27.85,
+        "top_emotions": [
+            {
+                "emotion": "happy",
+                "score": 0.2767
+            },
+            {
+                "emotion": "sad",
+                "score": 0.2633
+            },
+            {
+                "emotion": "angry",
+                "score": 0.16
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:49.498",
+        "user": "5",
+        "distracted": true,
+        "pitch": -40.44,
+        "top_emotions": [
+            {
+                "emotion": "sad",
+                "score": 0.415
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.2275
+            },
+            {
+                "emotion": "happy",
+                "score": 0.12
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:50.530",
+        "user": "5",
+        "distracted": false,
+        "pitch": -18.89,
+        "top_emotions": [
+            {
+                "emotion": "sad",
+                "score": 0.4077
+            },
+            {
+                "emotion": "fear",
+                "score": 0.2692
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.1715
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:51.529",
+        "user": "5",
+        "distracted": false,
+        "pitch": 0.0,
+        "top_emotions": [
+            {
+                "emotion": "sad",
+                "score": 0.398
+            },
+            {
+                "emotion": "fear",
+                "score": 0.328
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.13
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:41:52.549",
+        "user": "5",
+        "distracted": false,
+        "pitch": -2.89,
+        "top_emotions": [
+            {
+                "emotion": "happy",
+                "score": 0.37
+            },
+            {
+                "emotion": "sad",
+                "score": 0.23
+            },
+            {
+                "emotion": "angry",
+                "score": 0.13
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:54:37.039",
+        "user": "6",
+        "distracted": true,
+        "pitch": -22.36,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.57
+            },
+            {
+                "emotion": "angry",
+                "score": 0.27
+            },
+            {
+                "emotion": "sad",
+                "score": 0.09
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:54:38.077",
+        "user": "6",
+        "distracted": true,
+        "pitch": -23.58,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.6019
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1648
+            },
+            {
+                "emotion": "fear",
+                "score": 0.119
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:54:39.100",
+        "user": "6",
+        "distracted": false,
+        "pitch": 9.39,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.4672
+            },
+            {
+                "emotion": "surprise",
+                "score": 0.3076
+            },
+            {
+                "emotion": "fear",
+                "score": 0.098
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:54:40.137",
+        "user": "6",
+        "distracted": false,
+        "pitch": -15.41,
+        "top_emotions": [
+            {
+                "emotion": "happy",
+                "score": 0.6191
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.3013
+            },
+            {
+                "emotion": "surprise",
+                "score": 0.0491
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:54:41.157",
+        "user": "6",
+        "distracted": false,
+        "pitch": 13.74,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.3579
+            },
+            {
+                "emotion": "happy",
+                "score": 0.185
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1421
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:54:42.200",
+        "user": "6",
+        "distracted": true,
+        "pitch": -22.18,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.387
+            },
+            {
+                "emotion": "angry",
+                "score": 0.3496
+            },
+            {
+                "emotion": "fear",
+                "score": 0.1083
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:54:43.234",
+        "user": "6",
+        "distracted": true,
+        "pitch": -23.31,
+        "top_emotions": [
+            {
+                "emotion": "angry",
+                "score": 0.3735
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.3026
+            },
+            {
+                "emotion": "fear",
+                "score": 0.163
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:54:44.274",
+        "user": "6",
+        "distracted": true,
+        "pitch": -23.36,
+        "top_emotions": [
+            {
+                "emotion": "angry",
+                "score": 0.3664
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.3645
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1309
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:54:45.293",
+        "user": "6",
+        "distracted": false,
+        "pitch": -11.5,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.5467
+            },
+            {
+                "emotion": "angry",
+                "score": 0.2129
+            },
+            {
+                "emotion": "happy",
+                "score": 0.0825
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:54:46.306",
+        "user": "6",
+        "distracted": true,
+        "pitch": -20.46,
+        "top_emotions": [
+            {
+                "emotion": "happy",
+                "score": 0.83
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.1428
+            },
+            {
+                "emotion": "angry",
+                "score": 0.0104
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:54:47.331",
+        "user": "6",
+        "distracted": true,
+        "pitch": -24.92,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.5168
+            },
+            {
+                "emotion": "happy",
+                "score": 0.2312
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1636
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 16:54:48.379",
+        "user": "6",
+        "distracted": false,
+        "pitch": -7.96,
+        "top_emotions": [
+            {
+                "emotion": "happy",
+                "score": 0.962
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.016
+            },
+            {
+                "emotion": "angry",
+                "score": 0.012
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 17:52:30.558",
+        "user": "6",
+        "distracted": true,
+        "pitch": -26.94,
+        "top_emotions": [
+            {
+                "emotion": "angry",
+                "score": 0.56
+            },
+            {
+                "emotion": "sad",
+                "score": 0.215
+            },
+            {
+                "emotion": "fear",
+                "score": 0.125
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 17:52:31.576",
+        "user": "6",
+        "distracted": false,
+        "pitch": 2.85,
+        "top_emotions": [
+            {
+                "emotion": "angry",
+                "score": 0.4585
+            },
+            {
+                "emotion": "fear",
+                "score": 0.1905
+            },
+            {
+                "emotion": "surprise",
+                "score": 0.163
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 17:52:32.599",
+        "user": "6",
+        "distracted": false,
+        "pitch": -2.8,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.5027
+            },
+            {
+                "emotion": "surprise",
+                "score": 0.186
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1793
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 17:52:33.613",
+        "user": "6",
+        "distracted": false,
+        "pitch": -15.7,
+        "top_emotions": [
+            {
+                "emotion": "fear",
+                "score": 0.4155
+            },
+            {
+                "emotion": "angry",
+                "score": 0.3245
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.1245
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 17:52:36.696",
+        "user": "6",
+        "distracted": false,
+        "pitch": -11.99,
+        "top_emotions": [
+            {
+                "emotion": "angry",
+                "score": 0.5436
+            },
+            {
+                "emotion": "fear",
+                "score": 0.16
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.1564
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 17:52:37.708",
+        "user": "6",
+        "distracted": false,
+        "pitch": -15.84,
+        "top_emotions": [
+            {
+                "emotion": "angry",
+                "score": 0.5081
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.2988
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1081
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 17:52:38.722",
+        "user": "6",
+        "distracted": true,
+        "pitch": -21.27,
+        "top_emotions": [
+            {
+                "emotion": "angry",
+                "score": 0.8113
+            },
+            {
+                "emotion": "fear",
+                "score": 0.1062
+            },
+            {
+                "emotion": "sad",
+                "score": 0.045
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 17:52:39.765",
+        "user": "6",
+        "distracted": false,
+        "pitch": 1.41,
+        "top_emotions": [
+            {
+                "emotion": "angry",
+                "score": 0.4864
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.3479
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1007
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 17:52:40.812",
+        "user": "6",
+        "distracted": true,
+        "pitch": -24.28,
+        "top_emotions": [
+            {
+                "emotion": "angry",
+                "score": 0.4792
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.3158
+            },
+            {
+                "emotion": "sad",
+                "score": 0.125
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 17:52:41.825",
+        "user": "6",
+        "distracted": false,
+        "pitch": -4.92,
+        "top_emotions": [
+            {
+                "emotion": "angry",
+                "score": 0.6179
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.16
+            },
+            {
+                "emotion": "sad",
+                "score": 0.1268
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 17:52:42.869",
+        "user": "6",
+        "distracted": false,
+        "pitch": 4.76,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.4833
+            },
+            {
+                "emotion": "angry",
+                "score": 0.3807
+            },
+            {
+                "emotion": "sad",
+                "score": 0.0813
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 17:52:43.881",
+        "user": "6",
+        "distracted": false,
+        "pitch": 17.03,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.3777
+            },
+            {
+                "emotion": "angry",
+                "score": 0.3338
+            },
+            {
+                "emotion": "fear",
+                "score": 0.1592
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 17:52:44.893",
+        "user": "6",
+        "distracted": false,
+        "pitch": -1.4,
+        "top_emotions": [
+            {
+                "emotion": "angry",
+                "score": 0.49
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.3933
+            },
+            {
+                "emotion": "sad",
+                "score": 0.058
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 18:07:38.924",
+        "user": "6",
+        "distracted": false,
+        "pitch": -8.64,
+        "top_emotions": [
+            {
+                "emotion": "fear",
+                "score": 0.5356
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.2456
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1389
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 18:07:39.921",
+        "user": "6",
+        "distracted": true,
+        "pitch": -20.45,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.4329
+            },
+            {
+                "emotion": "fear",
+                "score": 0.3214
+            },
+            {
+                "emotion": "angry",
+                "score": 0.1338
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 18:07:40.959",
+        "user": "6",
+        "distracted": true,
+        "pitch": -22.49,
+        "top_emotions": [
+            {
+                "emotion": "angry",
+                "score": 0.4
+            },
+            {
+                "emotion": "fear",
+                "score": 0.36
+            },
+            {
+                "emotion": "sad",
+                "score": 0.2
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 18:07:41.990",
+        "user": "6",
+        "distracted": false,
+        "pitch": -18.28,
+        "top_emotions": [
+            {
+                "emotion": "happy",
+                "score": 0.3887
+            },
+            {
+                "emotion": "fear",
+                "score": 0.2206
+            },
+            {
+                "emotion": "neutral",
+                "score": 0.2075
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-02-21 18:07:42.998",
+        "user": "6",
+        "distracted": false,
+        "pitch": 1.17,
+        "top_emotions": [
+            {
+                "emotion": "neutral",
+                "score": 0.3448
+            },
+            {
+                "emotion": "happy",
+                "score": 0.2848
+            },
+            {
+                "emotion": "angry",
+                "score": 0.2522
+            }
+        ]
+    }
+]
