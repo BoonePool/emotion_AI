@@ -1,5 +1,39 @@
 import { TimeseriesItem, Flag, SessionMetrics, Emotion } from '../types';
 
+export const processRealData = (rawData: any[]): TimeseriesItem[] => {
+  if (!rawData || rawData.length === 0) return [];
+
+  // Sort by timestamp just in case
+  const sortedData = [...rawData].sort((a, b) => 
+    new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+  );
+
+  const startTime = new Date(sortedData[0].timestamp).getTime();
+
+  return sortedData.map((item) => {
+    const t_s = Math.floor((new Date(item.timestamp).getTime() - startTime) / 1000);
+    
+    const emotions: Record<string, number> = {
+      happy: 0, neutral: 0, sad: 0, anger: 0, fear: 0, surprise: 0, disgust: 0
+    };
+
+    item.top_emotions.forEach((e: any) => {
+      const key = e.emotion === 'angry' ? 'anger' : e.emotion;
+      if (key in emotions) {
+        emotions[key] = e.score;
+      }
+    });
+
+    return {
+      t_s,
+      engagement_mean: item.distracted ? 0.3 : 0.85,
+      distracted_mean: item.distracted ? 1 : 0,
+      pitch: item.pitch,
+      ...emotions
+    } as TimeseriesItem;
+  });
+};
+
 export const generateMockTimeseries = (duration: number = 600): TimeseriesItem[] => {
   const data: TimeseriesItem[] = [];
   for (let i = 0; i < duration; i++) {
@@ -104,7 +138,7 @@ export const computeSessionMetrics = (timeseries: TimeseriesItem[]): SessionMetr
   const presentation_score = Math.round((avg_engagement * 70) + ( (1 - avg_distraction) * 30));
 
   return {
-    duration_s: timeseries.length,
+    duration_s: timeseries.length > 0 ? timeseries[timeseries.length - 1].t_s : 0,
     avg_engagement_0_1: avg_engagement,
     distraction_rate_0_1: avg_distraction,
     dominant_emotion,

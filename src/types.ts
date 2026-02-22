@@ -4,6 +4,7 @@ export interface TimeseriesItem {
   t_s: number;
   engagement_mean: number;
   distracted_mean: number;
+  pitch?: number;
   happy: number;
   neutral: number;
   sad: number;
