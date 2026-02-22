@@ -147,6 +147,11 @@ export default function Home({ session, setSession }: HomeProps) {
   const handleGenerateBlurb = async () => {
     if (!selectedFlag || !session.sessionMetrics) return;
     
+    // Check if API key is selected if using a platform that requires it
+    if (window.aistudio && !(await window.aistudio.hasSelectedApiKey())) {
+      await window.aistudio.openSelectKey();
+    }
+
     setIsGeneratingBlurb(true);
     try {
       const blurb = await generateFlagBlurb(selectedFlag, session.sessionMetrics);
@@ -154,8 +159,13 @@ export default function Home({ session, setSession }: HomeProps) {
         ...prev,
         flagBlurbs: { ...prev.flagBlurbs, [selectedFlag.flag_id]: blurb }
       }));
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error generating blurb:", err);
+      const errorMessage = err.message || "Unknown error";
+      if (errorMessage.includes("API_KEY") || errorMessage.includes("key")) {
+        alert("Gemini API Key issue. Please ensure you have selected a valid API key.");
+        if (window.aistudio) await window.aistudio.openSelectKey();
+      }
     } finally {
       setIsGeneratingBlurb(false);
     }
@@ -367,7 +377,7 @@ export default function Home({ session, setSession }: HomeProps) {
                   <Tooltip 
                     cursor={{ fill: '#f8fafc' }}
                     contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
-                    formatter={(value: number) => value.toFixed(3)} // This handles the rounding
+                    formatter={(value: number) => value.toFixed(3)}
                   />
                   <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={32}>
                     {(selectedFlag?.top_emotions || []).map((entry, index) => (

@@ -69,6 +69,12 @@ export interface FullSummary {
   };
 }
 
+export interface TranscriptSegment {
+  start: number;
+  end: number;
+  text: string;
+}
+
 export interface SessionState {
   sessionId: string;
   timeseries: TimeseriesItem[];
@@ -77,4 +83,15 @@ export interface SessionState {
   fullSummary: FullSummary | null;
   sessionMetrics: SessionMetrics | null;
   videoUrl: string | null;
+  transcript?: string;
+  transcriptSegments?: TranscriptSegment[];
+}
+
+declare global {
+  interface Window {
+    aistudio: {
+      hasSelectedApiKey: () => Promise<boolean>;
+      openSelectKey: () => Promise<void>;
+    };
+  }
 }

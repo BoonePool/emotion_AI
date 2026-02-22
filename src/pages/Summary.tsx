@@ -21,6 +21,12 @@ export default function Summary({ session, setSession }: SummaryProps) {
   const handleGenerate = async () => {
     if (!session.sessionMetrics) return;
     
+    // Check if API key is selected if using a platform that requires it
+    if (window.aistudio && !(await window.aistudio.hasSelectedApiKey())) {
+      await window.aistudio.openSelectKey();
+      // After opening, we proceed. The platform handles the injection.
+    }
+
     setIsGenerating(true);
     try {
       // Get top 3 emotions for prompt
@@ -39,8 +45,14 @@ export default function Summary({ session, setSession }: SummaryProps) {
 
       const summary = await generateFullSummary(session.sessionMetrics, session.flags, topEmotions);
       setSession(prev => ({ ...prev, fullSummary: summary }));
-    } catch (err) {
-      alert("Failed to generate summary. Please check your API key.");
+    } catch (err: any) {
+      const errorMessage = err.message || "Unknown error";
+      if (errorMessage.includes("API_KEY") || errorMessage.includes("key")) {
+        alert("Gemini API Key issue: " + errorMessage + ". Please ensure you have selected a valid API key.");
+        if (window.aistudio) await window.aistudio.openSelectKey();
+      } else {
+        alert("Failed to generate summary: " + errorMessage);
+      }
       console.error(err);
     } finally {
       setIsGenerating(false);
