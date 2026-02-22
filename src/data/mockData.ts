@@ -4,30 +4,70 @@ export const processRealData = (rawData: any[]): TimeseriesItem[] => {
   if (!rawData || rawData.length === 0) return [];
 
   // Sort by timestamp just in case
-  const sortedData = [...rawData].sort((a, b) => 
-    new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+  const sortedData = [...rawData].sort(
+    (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
   );
 
   const startTime = new Date(sortedData[0].timestamp).getTime();
 
+  // ✅ Neutral engagement penalty tuning (reasonable defaults)
+  const NEUTRAL_START_S = 10;
+  const NEUTRAL_PENALTY_START = 0.06; // X at first neutral second (>=10s)
+  const NEUTRAL_PENALTY_STEP = 0.02;  // grows per consecutive neutral second
+  const NEUTRAL_PENALTY_MAX = 0.30;   // caps penalty
+  const NEUTRAL_DOM_THRESHOLD = 0.4;  // optional: require neutral >= this to count
+
+  let neutralStreak = 0;
+
   return sortedData.map((item) => {
     const t_s = Math.floor((new Date(item.timestamp).getTime() - startTime) / 1000);
-    
+
     const emotions: Record<string, number> = {
       happy: 0, neutral: 0, sad: 0, anger: 0, fear: 0, surprise: 0, disgust: 0
     };
 
     item.top_emotions.forEach((e: any) => {
       const key = e.emotion === 'angry' ? 'anger' : e.emotion;
-      if (key in emotions) {
-        emotions[key] = e.score;
-      }
+      if (key in emotions) emotions[key] = e.score;
     });
+
+    // Determine if this second is "neutral state" (neutral is dominant)
+    const neutralScore = emotions.neutral;
+    const maxOther = Math.max(
+      emotions.happy,
+      emotions.sad,
+      emotions.anger,
+      emotions.fear,
+      emotions.surprise,
+      emotions.disgust
+    );
+    const isNeutralDominant =
+      neutralScore >= maxOther && neutralScore >= NEUTRAL_DOM_THRESHOLD;
+
+    // Base values (existing behavior)
+    const distracted = !!item.distracted;
+    const baseEngagement = distracted ? 0.3 : 0.85;
+
+    // Track consecutive neutral streak only from 10s onward
+    if (t_s >= NEUTRAL_START_S && isNeutralDominant) neutralStreak += 1;
+    else neutralStreak = 0;
+
+    // Compute penalty X that grows with streak and caps
+    const penalty =
+      neutralStreak > 0
+        ? Math.min(
+            NEUTRAL_PENALTY_START + NEUTRAL_PENALTY_STEP * (neutralStreak - 1),
+            NEUTRAL_PENALTY_MAX
+          )
+        : 0;
+
+    // Apply penalty + clamp to [0,1]
+    const engagement_mean = Math.max(0, Math.min(1, baseEngagement - penalty));
 
     return {
       t_s,
-      engagement_mean: item.distracted ? 0.3 : 0.85,
-      distracted_mean: item.distracted ? 1 : 0,
+      engagement_mean,
+      distracted_mean: distracted ? 1 : 0,
       pitch: item.pitch,
       ...emotions
     } as TimeseriesItem;
@@ -55,18 +95,20 @@ export const generateMockTimeseries = (duration: number = 600): TimeseriesItem[]
 
 export const generateMockFlags = (timeseries: TimeseriesItem[]): Flag[] => {
   if (timeseries.length === 0) return [];
-  
+
   const flags: Flag[] = [];
   const count = Math.min(5, Math.floor(timeseries.length / 10) + 1);
-  
+
   for (let i = 0; i < count; i++) {
     // Ensure we have some padding for "before" and "after" evidence
     const padding = Math.min(10, Math.floor(timeseries.length / 4));
-    const range = Math.max(1, timeseries.length - (padding * 2));
+    const range = Math.max(1, timeseries.length - padding * 2);
     const t_s = Math.floor(Math.random() * range) + padding;
-    
-    const type = (['emotion_spike', 'engagement_drop', 'distraction_spike'] as const)[Math.floor(Math.random() * 3)];
-    
+
+    const type = (['emotion_spike', 'engagement_drop', 'distraction_spike'] as const)[
+      Math.floor(Math.random() * 3)
+    ];
+
     const item = timeseries[t_s];
     if (!item) continue;
 
@@ -78,7 +120,9 @@ export const generateMockFlags = (timeseries: TimeseriesItem[]): Flag[] => {
       { emotion: 'fear', value: item.fear },
       { emotion: 'surprise', value: item.surprise },
       { emotion: 'disgust', value: item.disgust },
-    ].sort((a, b) => b.value - a.value).slice(0, 3);
+    ]
+      .sort((a, b) => b.value - a.value)
+      .slice(0, 3);
 
     const beforeIdx = Math.max(0, t_s - 5);
     const afterIdx = Math.min(timeseries.length - 1, t_s + 5);
@@ -109,14 +153,23 @@ export const computeSessionMetrics = (timeseries: TimeseriesItem[]): SessionMetr
       presentation_score_0_100: 0,
     };
   }
-  const avg_engagement = timeseries.reduce((acc, curr) => acc + curr.engagement_mean, 0) / timeseries.length;
-  const avg_distraction = timeseries.reduce((acc, curr) => acc + curr.distracted_mean, 0) / timeseries.length;
-  
+
+  const avg_engagement =
+    timeseries.reduce((acc, curr) => acc + curr.engagement_mean, 0) / timeseries.length;
+  const avg_distraction =
+    timeseries.reduce((acc, curr) => acc + curr.distracted_mean, 0) / timeseries.length;
+
   const emotionSums: Record<string, number> = {
-    happy: 0, neutral: 0, sad: 0, anger: 0, fear: 0, surprise: 0, disgust: 0
+    happy: 0,
+    neutral: 0,
+    sad: 0,
+    anger: 0,
+    fear: 0,
+    surprise: 0,
+    disgust: 0,
   };
-  
-  timeseries.forEach(item => {
+
+  timeseries.forEach((item) => {
     emotionSums.happy += item.happy;
     emotionSums.neutral += item.neutral;
     emotionSums.sad += item.sad;
@@ -135,7 +188,7 @@ export const computeSessionMetrics = (timeseries: TimeseriesItem[]): SessionMetr
     }
   });
 
-  const presentation_score = Math.round((avg_engagement * 70) + ( (1 - avg_distraction) * 30));
+  const presentation_score = Math.round(avg_engagement * 70 + (1 - avg_distraction) * 30);
 
   return {
     duration_s: timeseries.length > 0 ? timeseries[timeseries.length - 1].t_s : 0,
